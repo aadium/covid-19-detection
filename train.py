@@ -1,7 +1,6 @@
 import cv2
 import os
 import numpy as np
-import tensorflow as tf
 import matplotlib.pyplot as plt
 from sklearn.model_selection import train_test_split
 from keras.src.models import Sequential
@@ -9,21 +8,21 @@ from keras.src.layers import Conv2D, MaxPooling2D, Flatten, Dense
 from keras.src.legacy.preprocessing.image import ImageDataGenerator
 from sklearn.preprocessing import LabelBinarizer
 
-dataset_path = 'covid19\\train'
-test_dir = 'covid19\\test'
+train_dir = 'dataset\\train'
+test_dir = 'dataset\\test'
 
-img_size = 128
-num_classes = len(os.listdir(dataset_path))
+img_size = 64
+num_classes = len(os.listdir(train_dir))
 batch_size = 32
 
 
 def load_dataset():
     loaded_images = []
     loaded_lbls = []
-    classes = os.listdir(dataset_path)
+    classes = os.listdir(train_dir)
     label_binarizer = LabelBinarizer()
     for class_name in classes:
-        class_path = os.path.join(dataset_path, class_name)
+        class_path = os.path.join(train_dir, class_name)
         if os.path.isdir(class_path):  # Check if the current item is a directory
             for image_name in os.listdir(class_path):
                 image_path = os.path.join(class_path, image_name)

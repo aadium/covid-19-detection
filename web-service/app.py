@@ -22,7 +22,7 @@ with open('../classes.txt', 'r', encoding='utf-8') as f:
 
 def preprocess_image(image):
     try:
-        image = image.resize((128, 128))  # Resize to match your model's input shape
+        image = image.resize((64, 64))  # Resize to match your model's input shape
         image = np.array(image)
         image = np.expand_dims(image, axis=0)  # Add batch dimension
         image = image / 255.0  # Normalize if necessary

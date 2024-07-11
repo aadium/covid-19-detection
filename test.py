@@ -1,11 +1,10 @@
 import cv2
-import os
 import numpy as np
 import tensorflow as tf
 import os
 
-img_size = 128
-test_dir = 'covid19\\test'
+img_size = 64
+test_dir = 'dataset\\val'
 
 
 def get_image_paths(directory):
@@ -24,7 +23,6 @@ images_to_be_classified = get_image_paths(test_dir)
 resized_images = []
 
 for image_path in images_to_be_classified:
-    print(image_path)  # Print the path of the image
     image = cv2.imread(image_path)  # Load the image using OpenCV
 
     if image is not None:  # Check if the image was loaded successfully
@@ -41,7 +39,7 @@ resized_images = resized_images / 255.0
 model = tf.keras.models.load_model('covid19_model.h5')
 predictions = model.predict(resized_images)
 
-labels = ['Covid 19', 'Normal', 'Viral Pneumonia']
+labels = ['Bacterial Pneumonia', 'COVID-19', 'Normal', 'Tuberculosis', 'Viral Pneumonia']
 
 for i in range(len(images_to_be_classified)):
     image_name = images_to_be_classified[i]
