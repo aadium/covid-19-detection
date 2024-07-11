@@ -56,7 +56,7 @@ def predict():
         app.logger.info(f"Image preprocessed successfully. Shape: {image.shape}, Type: {image.dtype}")
 
         app.logger.info("Making prediction...")
-        predictions = model.predict(image, vebrose=0)
+        predictions = model.predict(image, verbose=0)
         app.logger.info(f"Prediction made successfully. Predictions: {predictions}")
 
         predicted_class_index = np.argmax(predictions)
