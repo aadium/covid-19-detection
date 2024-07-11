@@ -68,11 +68,29 @@ def predict():
         probability = float(np.max(predictions))
         app.logger.info(f"Probability: {probability}")
 
+        second_predicted_class_index = np.argsort(predictions[0])[-2]
+        app.logger.info(f"Second predicted class index: {second_predicted_class_index}")
+
+        second_predicted_class_name = class_names[second_predicted_class_index]
+        app.logger.info(f"Second predicted class name: {second_predicted_class_name}")
+
+        second_probability = float(predictions[0][second_predicted_class_index])
+        app.logger.info(f"Second probability: {second_probability}")
+
     except Exception as e:
         app.logger.error(f"Error during prediction: {str(e).encode('utf-8', 'ignore').decode('utf-8')}")
         return jsonify({'error loc 2': 'Error during prediction'}), 500
 
-    return jsonify({'class': predicted_class_name, 'probability': probability})
+    return jsonify([
+        {
+            'class': predicted_class_name,
+            'probability': probability
+        },
+        {
+            'class': second_predicted_class_name,
+            'probability': second_probability
+        }
+    ])
 
 if __name__ == '__main__':
     app.run(debug=True)
