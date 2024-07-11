@@ -1,8 +1,10 @@
 # COVID-19 detection
  
-This is a Python script for training a Convolutional Neural Network (CNN) model to detect COVID-19 from chest X-ray images. Here is a detailed description of the code:
+This is a Python script for training a Convolutional Neural Network (CNN) model to detect COVID-19 from chest X-ray images. Here is a detailed description of the files:
 
+### train.py
 <li>The necessary libraries are imported, including numpy, cv2, os, matplotlib.pyplot, random, sklearn.model_selection, keras.models, keras.layers, and keras.preprocessing.image.
+<li>The dataset can be downloaded from here: https://www.kaggle.com/datasets/imdevskp/corona-virus-report
 <li>The paths for the dataset and test images are set.
 <li>The parameters such as image size, number of classes, and batch size are defined.
 <li>The "load_dataset" function is defined to load the images and labels from the dataset directory. It iterates through the class directories, reads the images using OpenCV, resizes them, and appends them to the "images" list. The labels are also collected and converted to unique binary arrays using label binarization.
@@ -15,7 +17,11 @@ This is a Python script for training a Convolutional Neural Network (CNN) model 
 <li>The accuracy and loss history during training are stored in the "history" variable for plotting.
 <li>The accuracy and loss graphs are plotted using matplotlib.
 <li>The model is evaluated on the testing data using the evaluate function, and the test loss and accuracy are printed.
+<li>The trained model is saved as an H5 file named "covid19_model.h5".
+
+### test.py
+<li>The image parameters are defined
 <li>The images to be classified are loaded from the test directory, resized, and normalized.
+<li>The model is loaded
 <li>The model predicts the labels for the resized images using the predict function.
 <li>The image names and their corresponding predicted labels are printed.
-<li>The trained model is saved as an H5 file named "covid19model.h5".
