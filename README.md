@@ -1,6 +1,10 @@
 # COVID-19 detection
  
-This is a Python script for training a Convolutional Neural Network (CNN) model to detect COVID-19 from chest X-ray images. Here is a detailed description of the files:
+This is a Python program for training a Convolutional Neural Network (CNN) model to detect COVID-19 from chest X-ray images, and serivng it through an API endpoint. Here is a detailed description of the files involved:
+
+### web-service
+<li>This is a web server built using Flask that serves the image classification model over a web service.
+<li>You just have to specify the image url in the request body, and it will return the top 2 predicted classes along with their probabilities.
 
 ### train.py
 <li>The necessary libraries are imported, including numpy, cv2, os, matplotlib.pyplot, random, sklearn.model_selection, keras.models, keras.layers, and keras.preprocessing.image.
