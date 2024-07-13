@@ -1,3 +1,5 @@
-COVID 19
+Bacterial Pneumonia
+COVID-19
 Normal
+Tuberculosis
 Viral Pneumonia

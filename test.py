@@ -6,6 +6,9 @@ import os
 img_size = 64
 test_dir = 'dataset\\val'
 
+with open('classes.txt', 'r', encoding='utf-8') as f:
+    labels = f.read().splitlines()
+
 
 def get_image_paths(directory):
     image_paths = []
@@ -38,8 +41,6 @@ resized_images = resized_images / 255.0
 
 model = tf.keras.models.load_model('covid19_model.h5')
 predictions = model.predict(resized_images)
-
-labels = ['Bacterial Pneumonia', 'COVID-19', 'Normal', 'Tuberculosis', 'Viral Pneumonia']
 
 for i in range(len(images_to_be_classified)):
     image_name = images_to_be_classified[i]
